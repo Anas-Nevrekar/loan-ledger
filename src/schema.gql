@@ -1,0 +1,57 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateLoanInput {
+  endDate: DateTime!
+  interestRate: Float!
+  loanName: String!
+  principal: Float!
+  startDate: DateTime!
+  status: String!
+  userId: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Loan {
+  _id: ID!
+  endDate: DateTime!
+  interestRate: Float!
+  loanName: String!
+  principal: Float!
+  startDate: DateTime!
+  status: String!
+  userId: String!
+}
+
+type Mutation {
+  createLoan(input: CreateLoanInput!): Loan!
+  deleteLoan(id: String!): Boolean!
+  updateLoan(input: UpdateLoanInput!): Loan!
+}
+
+type Query {
+  getAllLoans: [Loan!]!
+  getLoan(id: String!): Loan!
+  interestDuePerUser: [UserInterest!]!
+}
+
+input UpdateLoanInput {
+  endDate: DateTime
+  id: ID!
+  interestRate: Float
+  loanName: String
+  principal: Float
+  startDate: DateTime
+  status: String
+  userId: String
+}
+
+type UserInterest {
+  totalInterestDue: Float!
+  userId: String!
+}

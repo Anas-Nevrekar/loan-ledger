@@ -3,6 +3,7 @@ import { LoanService } from '../loan.service';
 import { Loan } from '../model/loan.model';
 import { CreateLoanInput } from '../dto/create-loan.input';
 import { UpdateLoanInput } from '../dto/update-loan.input';
+import { UserInterest} from "../dto/user-interest.output"
 
 @Resolver(() => Loan)
 export class LoanResolver {
@@ -32,7 +33,7 @@ export class LoanResolver {
     async deleteLoan(@Args('id', { type: () => String }) id: string ) {
         return this.loanService.remove(id);
     }
-    @Query(() => [Object], { name: 'interestDuePerUser' })
+    @Query(() => [UserInterest], { name: 'interestDuePerUser' })
     async interestDuePerUser() {
         return this.loanService.interestDuePerUser();
     }
